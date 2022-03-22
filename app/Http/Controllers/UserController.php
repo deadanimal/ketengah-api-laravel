@@ -31,7 +31,18 @@ class UserController extends Controller
    
     public function update(Request $request, $id)
     {
-        //
+        // return $request;
+        $user = User::where('user_id', $id)->first();
+        if($request->type== 'email'){
+            $user->email = $request->data;
+        }else if ($request->type== 'nohp'){
+            $user->no_telefon = $request->data;
+        }else if ($request->type== 'pass'){
+            $user->password = $request->data;
+        }
+        
+        $user->save();
+        return response()->json($user);
     }
 
    
@@ -42,11 +53,29 @@ class UserController extends Controller
 
     public function UserLogin(Request $request)
     {
-        return $request;
+        $user = User::where('no_telefon',$request->no_telefon)->where('password', $request->password)->first();
+        if($user != null){
+            return response()->json($user);
+        }else{
+            return response()->json("false");
+        }
+        
     }
 
     public function UserRegister(Request $request)
     {
-        return $request;
+        $user = new User();
+        $user->name = $request->name;
+        $user->no_ic = $request->no_ic;
+        $user->no_telefon = $request->no_telefon;
+        $user->alamat = $request->alamat;
+        $user->poskod = $request->poskod;
+        $user->bandar = $request->bandar;
+        $user->negeri = $request->negeri;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+
+        return response()->json($user);
     }
 }
