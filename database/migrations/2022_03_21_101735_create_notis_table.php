@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('notis', function (Blueprint $table) {
             $table->id();
             $table->integer('admin_id');
-            $table->date('tarikh');
+            $table->string('tajuk');
             $table->string('keterangan');
             $table->timestamps();
         });

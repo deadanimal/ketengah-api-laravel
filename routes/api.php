@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AduanController;
+use App\Http\Controllers\KategoriAduanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,7 @@ Route::post('UserLogin', [UserController::class,'UserLogin']);
 Route::post('UserRegister', [UserController::class,'UserRegister']);
 
 Route::apiResource('aduan', AduanController::class);
+Route::post('AduanFirst', [AduanController::class,'AduanFirst']);
+Route::get('AduanDD', [AduanController::class,'AduanDD']);
+
+Route::apiResource('kategoriaduan', KategoriAduanController::class);

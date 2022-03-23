@@ -18,7 +18,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            AduanSeeder::class
+            AduanSeeder::class,
+            KategoriAduanSeeder::class,
+            NotisSeeder::class,
+            AdminSeeder::class
         ]);
     }
 }

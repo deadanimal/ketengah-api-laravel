@@ -20,9 +20,10 @@ class AduanSeeder extends Seeder
         DB::table('aduans')->truncate();
         Aduan::create([
             'user_id'=> '1',
-            'kategori'=> '1',
-            'jenis_rosak'=> '1',
-            'catatan'=>'test catatan'
+            'kategori'=> '01',
+            'jenis_rosak'=> '01',
+            'catatan'=>'test catatan',
+            'status'=>'DALAM PROSES'
         ]);
     }
 }
