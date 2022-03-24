@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AduanController;
 use App\Http\Controllers\KategoriAduanController;
-
+use App\Http\Controllers\PenghargaanController;
+use App\Http\Controllers\NotisController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,3 +32,11 @@ Route::post('AduanFirst', [AduanController::class,'AduanFirst']);
 Route::get('AduanDD', [AduanController::class,'AduanDD']);
 
 Route::apiResource('kategoriaduan', KategoriAduanController::class);
+
+Route::apiResource('penghargaan', PenghargaanController::class);
+
+Route::apiResource('notis', NotisController::class);
+Route::post('notisview', [NotisController::class,'notisview']);
+Route::post('softdelete', [NotisController::class,'softdelete']);
+
+Route::apiResource('admin', AdminController::class);

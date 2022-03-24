@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('admin_id');
             $table->string('tajuk');
             $table->string('keterangan');
+            $table->string('deleted')->default('[{"id":0},]');
+            $table->string('viewed')->default('[{"id":0},]');
             $table->timestamps();
         });
     }
