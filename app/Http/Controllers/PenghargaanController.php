@@ -28,7 +28,7 @@ class PenghargaanController extends Controller
    
     public function show($id)
     {
-        return $id;
+        return response()->json("false");
     }
 
    
