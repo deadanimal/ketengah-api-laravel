@@ -8,6 +8,7 @@ use App\Http\Controllers\KategoriAduanController;
 use App\Http\Controllers\PenghargaanController;
 use App\Http\Controllers\NotisController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PengumumanController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -34,9 +35,11 @@ Route::get('AduanDD', [AduanController::class,'AduanDD']);
 Route::apiResource('kategoriaduan', KategoriAduanController::class);
 
 Route::apiResource('penghargaan', PenghargaanController::class);
+Route::post('penghargaanview', [PenghargaanController::class,'penghargaanview']);
 
 Route::apiResource('notis', NotisController::class);
 Route::post('notisview', [NotisController::class,'notisview']);
 Route::post('softdelete', [NotisController::class,'softdelete']);
 
 Route::apiResource('admin', AdminController::class);
+Route::apiResource('pengumuman', PengumumanController::class);

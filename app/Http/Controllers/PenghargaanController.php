@@ -42,4 +42,17 @@ class PenghargaanController extends Controller
     {
         //
     }
+
+    public function penghargaanview(Request $request)
+    {
+        $penghargaan = Penghargaan::where('id', $request[0])->first();
+        $tempArray = json_decode($penghargaan->viewed);
+        $temp = (object)[];
+        $temp->id = $request[1];
+        array_push($tempArray, $temp);
+        $jsonData = json_encode($tempArray);
+        $penghargaan->viewed = $jsonData;
+        $penghargaan->save();
+        return $penghargaan;
+    }
 }
