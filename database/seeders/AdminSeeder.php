@@ -21,7 +21,7 @@ class AdminSeeder extends Seeder
             'password'=> 'pass',
             'no_telefon'=> '011',
             'email'=> 'email',
-            'nama'=>'nama admin'
+            'name'=>'nama admin'
         ]);
     }
 }

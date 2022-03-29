@@ -17,7 +17,12 @@ class NotisController extends Controller
    
     public function store(Request $request)
     {
-        return $request;
+        $Notis = new Notis();
+        $Notis->admin_id = $request->id;
+        $Notis->tajuk = $request->tajuk;
+        $Notis->keterangan = $request->keterangan;
+        $Notis->save();
+        return $Notis;
     }
 
    

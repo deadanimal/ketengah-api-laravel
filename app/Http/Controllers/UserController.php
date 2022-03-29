@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -55,9 +56,16 @@ class UserController extends Controller
     {
         $user = User::where('no_telefon',$request->no_telefon)->where('password', $request->password)->first();
         if($user != null){
+            $user->role = '1';
             return response()->json($user);
         }else{
-            return response()->json("false");
+            $admin = Admin::where('no_telefon',$request->no_telefon)->where('password', $request->password)->first();
+            if($admin != null){
+                $admin->role = '2';
+                return response()->json($admin);
+            }else{
+                return response()->json("false");
+            }
         }
         
     }
