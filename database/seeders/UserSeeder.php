@@ -27,8 +27,8 @@ class UserSeeder extends Seeder
             'bandar'=>'1',
             'negeri'=>'1',
             'email'=>'1',
-            'password'=>'pass'
-
+            'password'=>'pass',
+            'active'=>1
         ]);
     }
 }

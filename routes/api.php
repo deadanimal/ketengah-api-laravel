@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('user', UserController::class);
 Route::post('UserLogin', [UserController::class,'UserLogin']);
 Route::post('UserRegister', [UserController::class,'UserRegister']);
+Route::post('ForgotPass', [UserController::class,'ForgotPass']);
 
 Route::apiResource('aduan', AduanController::class);
 Route::post('AduanFirst', [AduanController::class,'AduanFirst']);
@@ -43,3 +44,4 @@ Route::post('softdelete', [NotisController::class,'softdelete']);
 
 Route::apiResource('admin', AdminController::class);
 Route::apiResource('pengumuman', PengumumanController::class);
+Route::get('pengumumantempoh', [PengumumanController::class,'pengumumantempoh']);

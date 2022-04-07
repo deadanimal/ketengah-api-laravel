@@ -44,4 +44,10 @@ class PengumumanController extends Controller
     {
         
     }
+
+    public function pengumumantempoh()
+    {
+        $penghargaan = Pengumuman::all();
+        return $penghargaan;
+    }
 }

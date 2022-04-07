@@ -55,4 +55,5 @@ class PenghargaanController extends Controller
         $penghargaan->save();
         return $penghargaan;
     }
+
 }

@@ -19,8 +19,9 @@ class NotisSeeder extends Seeder
         Notis::truncate();
         Notis::create([
             'admin_id'=> '1',
-            'tajuk'=> 'Pintu',
-            'keterangan'=>'Pintu Tandas'
+            'tajuk'=> 'Selamat Datang',
+            'keterangan'=>'Selamat Datang ke Applikasi Ketengah E-Sisper',
+            'created_at'=>'2030-03-21 07:17:31'
         ]);
     }
 }

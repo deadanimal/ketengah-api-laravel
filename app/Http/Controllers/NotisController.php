@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Notis;
+use App\Models\User;
 
 class NotisController extends Controller
 {
@@ -28,8 +29,8 @@ class NotisController extends Controller
    
     public function show($id)
     {
-        $json = '{"id": '.$id.'}';
-        $notis = Notis::whereRaw('not JSON_CONTAINS(deleted->"$[*].id", "'.$id.'")')->get();
+        $user = User::where('user_id',$id)->first();
+        $notis = Notis::whereRaw('not JSON_CONTAINS(deleted->"$[*].id", "'.$id.'")')->whereDate('created_at', '>=', $user->created_at)->get();
         return $notis;
     }
 

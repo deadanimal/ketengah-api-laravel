@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
@@ -26,7 +27,9 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return response()->json($user);
+        $user->active = 1;
+        $user->save();
+        return response()->json('Tahniah Akaun Anda Berjaya Diaktifkan Sila Log Masuk Di Applikasi E-Sisper');
     }
 
    
@@ -40,6 +43,8 @@ class UserController extends Controller
             $user->no_telefon = $request->data;
         }else if ($request->type== 'pass'){
             $user->password = $request->data;
+        }else if ($request->type== 'code'){
+            $user->active = 1;
         }
         
         $user->save();
@@ -67,7 +72,6 @@ class UserController extends Controller
                 return response()->json("false");
             }
         }
-        
     }
 
     public function UserRegister(Request $request)
@@ -82,8 +86,72 @@ class UserController extends Controller
         $user->negeri = $request->negeri;
         $user->email = $request->email;
         $user->password = $request->password;
-        $user->save();
+        $user->code = random_int(100000, 999999);
+        $phone = '0'.$user->no_telefon;
+
+        try {
+            $mess = 'Akaun e-Sisper anda berjaya didaftarkan. Sila Aktifkan Akaun anda di applikasi e-Sisper dengan menggunakan kod '.$user->code;
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'FlIJxKC0DQ1RF5af9zKL95bsbQ6hEADEDBRO0fnBoFs='
+            ])->post('https://mysmsdvsb.azurewebsites.net/api/messages', [
+                'keyword' => 'e-Sisper',
+                'message' => $mess,
+                'msisdn' => $phone
+            ]);
+        }catch(\Exception $e){
+            return '400';
+        }
+        
+        if(isset($response)){
+            $user->save();
+        }
 
         return response()->json($user);
+    }
+
+    public function ForgotPass(Request $request)
+    {
+        $user = User::where('no_telefon',$request->phone)->first();
+        $code = random_int(100000, 999999);
+        $phone = '0'.$request->phone;
+        if($user != null){
+            $data = 'user';
+            $user->password = 'Sisper'.$code;
+        }else{
+            $admin = Admin::where('no_telefon',$request->phone)->first();
+            if($admin != null){
+                $data = 'admin';
+                $admin->password = 'Sisper'.$code;
+            }else{
+                return response()->json("tiada");
+            }
+        }
+
+        try {
+            $mess = 'Permohonan set semula password akaun e-Sisper anda telah berjaya. Sila aktifkan akaun anda di applikasi e-Sisper dengan menggunakan katalaluan :- Sisper'.$code;
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'FlIJxKC0DQ1RF5af9zKL95bsbQ6hEADEDBRO0fnBoFs='
+            ])->post('https://mysmsdvsb.azurewebsites.net/api/messages', [
+                'keyword' => 'e-Sisper',
+                'message' => $mess,
+                'msisdn' => $phone
+            ]);
+        }catch(\Exception $e){
+            return '400';
+        }
+
+        if($data == 'user'){
+            if(isset($response)){
+                $user->save();
+            }
+        }else if($data == 'admin'){
+            if(isset($response)){
+                $admin->save();
+            }
+        }
+
+        return response()->json('succ');
     }
 }
