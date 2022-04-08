@@ -54,6 +54,9 @@ class AduanController extends Controller
 
     public function AduanFirst(Request $request){
         $aduanfirst = Aduan::where('user_id', $request[0])->orderBy('created_at','DESC')->first();
+        if(isset($aduanfirst)){
+            $aduanfirst = (object)[];
+        }
         $KateAduan = KategoriAduan::where('kategori_id',$aduanfirst->kategori)->where('kerosakan_id',$aduanfirst->jenis_rosak)->first();
         $aduanfirst->kategorilist = $KateAduan;
         $aduanCount = Aduan::where('user_id', $request[0])->count();
