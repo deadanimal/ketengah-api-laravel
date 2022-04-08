@@ -17,7 +17,14 @@ class AdminController extends Controller
    
     public function store(Request $request)
     {
-        return $request;
+        $admin = new Admin();
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->no_telefon = $request->no_telefon;
+        $admin->password = $request->password;
+        $admin->save();
+         
+        return response()->json($admin);
     }
 
    
