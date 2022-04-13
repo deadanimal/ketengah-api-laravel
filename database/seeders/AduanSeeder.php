@@ -23,7 +23,7 @@ class AduanSeeder extends Seeder
             'kategori'=> '01',
             'jenis_rosak'=> '01',
             'catatan'=>'test catatan',
-            'status'=>'DALAM PROSES'
+            'status'=>'0'
         ]);
     }
 }

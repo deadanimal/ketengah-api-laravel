@@ -65,6 +65,17 @@ class Stringable implements JsonSerializable
     }
 
     /**
+     * Append a new line to the string.
+     *
+     * @param  int  $count
+     * @return $this
+     */
+    public function newLine($count = 1)
+    {
+        return $this->append(str_repeat(PHP_EOL, $count));
+    }
+
+    /**
      * Transliterate a UTF-8 value to ASCII.
      *
      * @param  string  $language
@@ -611,6 +622,16 @@ class Stringable implements JsonSerializable
     public function scan($format)
     {
         return collect(sscanf($this->value, $format));
+    }
+
+    /**
+     * Remove all "extra" blank space from the given string.
+     *
+     * @return static
+     */
+    public function squish()
+    {
+        return new static(Str::squish($this->value));
     }
 
     /**

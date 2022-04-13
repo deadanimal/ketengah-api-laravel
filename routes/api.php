@@ -32,6 +32,7 @@ Route::post('ForgotPass', [UserController::class,'ForgotPass']);
 Route::apiResource('aduan', AduanController::class);
 Route::post('AduanFirst', [AduanController::class,'AduanFirst']);
 Route::get('AduanDD', [AduanController::class,'AduanDD']);
+Route::post('aduanStatus', [AduanController::class,'aduanStatus']);
 
 Route::apiResource('kategoriaduan', KategoriAduanController::class);
 

@@ -12,6 +12,10 @@ class AduanController extends Controller
     public function index()
     {
         $aduan = Aduan::all();
+        foreach ($aduan as $item){
+            $KateAduan = KategoriAduan::where('kategori_id',$item->kategori)->where('kerosakan_id',$item->jenis_rosak)->first();
+            $item->katedet = $KateAduan;
+        }
         
         return response()->json($aduan);
     }
@@ -53,12 +57,15 @@ class AduanController extends Controller
     }
 
     public function AduanFirst(Request $request){
-        $aduanfirst = Aduan::where('user_id', $request[0])->orderBy('created_at','DESC')->first();
+        $aduanfirst = Aduan::where('user_id', $request[0])->first();
         if(isset($aduanfirst)){
+            $KateAduan = KategoriAduan::where('kategori_id',$aduanfirst->kategori)->where('kerosakan_id',$aduanfirst->jenis_rosak)->first();
+            $aduanfirst->kategorilist = $KateAduan;
+        }else{
             $aduanfirst = (object)[];
+            $aduanfirst->kategorilist = '';
         }
-        $KateAduan = KategoriAduan::where('kategori_id',$aduanfirst->kategori)->where('kerosakan_id',$aduanfirst->jenis_rosak)->first();
-        $aduanfirst->kategorilist = $KateAduan;
+        
         $aduanCount = Aduan::where('user_id', $request[0])->count();
         return [$aduanfirst,$aduanCount];
     }
@@ -67,5 +74,13 @@ class AduanController extends Controller
         $KateAduan = KategoriAduan::select('kategori_id','kategori')->distinct()->get();
         $JenisRosak = KategoriAduan::all();
         return [$KateAduan,$JenisRosak];
+    }
+
+    public function aduanStatus(Request $request){
+        $aduanfirst = Aduan::where('id', $request->id)->first();
+        $aduanfirst->status = $request->status;
+        // $request->status;
+        $aduanfirst->save();
+        return $aduanfirst;
     }
 }

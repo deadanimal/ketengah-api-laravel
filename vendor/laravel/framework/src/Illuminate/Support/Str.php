@@ -492,10 +492,6 @@ class Str
             return $string;
         }
 
-        if (is_null($length) && PHP_MAJOR_VERSION < 8) {
-            $length = mb_strlen($string, $encoding);
-        }
-
         $segment = mb_substr($string, $index, $length, $encoding);
 
         if ($segment === '') {
@@ -886,6 +882,17 @@ class Str
     }
 
     /**
+     * Remove all "extra" blank space from the given string.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public static function squish($value)
+    {
+        return preg_replace('/\s+/', ' ', trim($value));
+    }
+
+    /**
      * Determine if a given string starts with a given substring.
      *
      * @param  string  $haystack
@@ -1024,11 +1031,12 @@ class Str
      * Get the number of words a string contains.
      *
      * @param  string  $string
+     * @param  string|null  $characters
      * @return int
      */
-    public static function wordCount($string)
+    public static function wordCount($string, $characters = null)
     {
-        return str_word_count($string);
+        return str_word_count($string, 0, $characters);
     }
 
     /**
