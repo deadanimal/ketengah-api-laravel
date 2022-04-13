@@ -25,5 +25,12 @@ class AduanSeeder extends Seeder
             'catatan'=>'test catatan',
             'status'=>'0'
         ]);
+        Aduan::create([
+            'user_id'=> '1',
+            'kategori'=> '01',
+            'jenis_rosak'=> '01',
+            'catatan'=>'test catatan',
+            'status'=>'0'
+        ]);
     }
 }
