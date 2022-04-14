@@ -28,7 +28,7 @@ class AduanController extends Controller
         $Aduan->kategori = $request->kategori;
         $Aduan->jenis_rosak = $request->rosak;
         $Aduan->catatan = $request->catatan;
-        $Aduan->status = 'TIADA';
+        $Aduan->status = 0;
         $Aduan->save();
         return $Aduan;
     }
