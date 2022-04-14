@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6443c430e38e8675572ba436df9d4b3e
+class ComposerStaticInit8956f0abd5ca8976b30e2bddc786292f
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -1940,6 +1940,7 @@ class ComposerStaticInit6443c430e38e8675572ba436df9d4b3e
         'Illuminate\\Database\\Migrations\\MigrationCreator' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Migrations/MigrationCreator.php',
         'Illuminate\\Database\\Migrations\\MigrationRepositoryInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Migrations/MigrationRepositoryInterface.php',
         'Illuminate\\Database\\Migrations\\Migrator' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php',
+        'Illuminate\\Database\\MultipleColumnsSelectedException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/MultipleColumnsSelectedException.php',
         'Illuminate\\Database\\MultipleRecordsFoundException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/MultipleRecordsFoundException.php',
         'Illuminate\\Database\\MySqlConnection' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/MySqlConnection.php',
         'Illuminate\\Database\\PDO\\Concerns\\ConnectsToDatabase' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/PDO/Concerns/ConnectsToDatabase.php',
@@ -2930,6 +2931,7 @@ class ComposerStaticInit6443c430e38e8675572ba436df9d4b3e
         'League\\Flysystem\\FilesystemWriter' => __DIR__ . '/..' . '/league/flysystem/src/FilesystemWriter.php',
         'League\\Flysystem\\InvalidStreamProvided' => __DIR__ . '/..' . '/league/flysystem/src/InvalidStreamProvided.php',
         'League\\Flysystem\\InvalidVisibilityProvided' => __DIR__ . '/..' . '/league/flysystem/src/InvalidVisibilityProvided.php',
+        'League\\Flysystem\\Local\\FallbackMimeTypeDetector' => __DIR__ . '/..' . '/league/flysystem/src/Local/FallbackMimeTypeDetector.php',
         'League\\Flysystem\\Local\\LocalFilesystemAdapter' => __DIR__ . '/..' . '/league/flysystem/src/Local/LocalFilesystemAdapter.php',
         'League\\Flysystem\\MountManager' => __DIR__ . '/..' . '/league/flysystem/src/MountManager.php',
         'League\\Flysystem\\PathNormalizer' => __DIR__ . '/..' . '/league/flysystem/src/PathNormalizer.php',
@@ -5643,10 +5645,10 @@ class ComposerStaticInit6443c430e38e8675572ba436df9d4b3e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6443c430e38e8675572ba436df9d4b3e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6443c430e38e8675572ba436df9d4b3e::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit6443c430e38e8675572ba436df9d4b3e::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit6443c430e38e8675572ba436df9d4b3e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8956f0abd5ca8976b30e2bddc786292f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8956f0abd5ca8976b30e2bddc786292f::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit8956f0abd5ca8976b30e2bddc786292f::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit8956f0abd5ca8976b30e2bddc786292f::$classMap;
 
         }, null, ClassLoader::class);
     }
