@@ -21,7 +21,13 @@ class DatabaseSeeder extends Seeder
             AduanSeeder::class,
             KategoriAduanSeeder::class,
             NotisSeeder::class,
-            AdminSeeder::class
+            AdminSeeder::class,
+            DewanSeeder::class,
+            LokasiSeeder::class,
+            UrusanSeeder::class,
+            AlatanSeeder::class,
+            FutsalSeeder::class,
+            BadmintonSeeder::class
         ]);
     }
 }

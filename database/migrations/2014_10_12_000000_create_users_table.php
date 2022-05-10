@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('active')->default(0);
             $table->integer('code')->nullable();
+            $table->integer('tender')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -9,6 +9,16 @@ use App\Http\Controllers\PenghargaanController;
 use App\Http\Controllers\NotisController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\DewanController;
+use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\LainController;
+use App\Http\Controllers\SHTenderController;
+use App\Http\Controllers\SHTenderDetailController;
+use App\Http\Controllers\AlatanController;
+use App\Http\Controllers\BadmintonController;
+use App\Http\Controllers\FutsalController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -46,3 +56,17 @@ Route::post('softdelete', [NotisController::class,'softdelete']);
 Route::apiResource('admin', AdminController::class);
 Route::apiResource('pengumuman', PengumumanController::class);
 Route::get('pengumumantempoh', [PengumumanController::class,'pengumumantempoh']);
+
+Route::apiResource('dewan', DewanController::class);
+Route::apiResource('lokasi', LokasiController::class);
+Route::apiResource('booking', BookingController::class);
+Route::apiResource('lain', LainController::class);
+Route::get('laindd', [LainController::class,'laindd']);
+
+Route::apiResource('tender', SHTenderController::class);
+Route::apiResource('tenderdtl', SHTenderDetailController::class);
+Route::apiResource('alatan', AlatanController::class);
+Route::apiResource('badminton', BadmintonController::class);
+Route::apiResource('futsal', FutsalController::class);
+
+
