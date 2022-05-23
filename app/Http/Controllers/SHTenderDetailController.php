@@ -39,13 +39,20 @@ class SHTenderDetailController extends Controller
    
     public function update(Request $request, $id)
     {
-        //
+        $tender = SHTenderDetail::where('id', $id)->first();
+        $tender->urusan = $request->urusan;
+        $tender->harga = $request->harga;
+        $tender->catatan = $request->catatan;
+        $tender->save();
+        return $tender;
     }
 
    
     public function destroy($id)
     {
-        //
+        $tender = SHTenderDetail::find($id);
+        $tender->delete();
+        return $tender;
     }
 
 }

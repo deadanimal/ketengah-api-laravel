@@ -24,8 +24,7 @@ return new class extends Migration
             $table->string('date_to')->nullable();
             $table->string('days')->nullable();
             $table->string('hour')->nullable();
-            $table->string('time_from')->nullable();
-            $table->string('time_to')->nullable();
+            $table->string('time')->nullable();
             $table->string('amaun')->nullable();
             $table->string('qty')->nullable();
             $table->timestamps();

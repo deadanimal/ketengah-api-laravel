@@ -67,7 +67,7 @@ class BadmintonSeeder extends Seeder
             'lokasi'=>'2'
         ]);
         Badminton::create([
-            'nama_gelanggang'=> 'COURT1',
+            'nama_gelanggang'=> 'COURT2',
             'kod_urusan'=> '1',
             'kod_sub_urusan'=> '1',
             'harga'=>'5',

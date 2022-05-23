@@ -34,8 +34,7 @@ class BookingController extends Controller
         $Booking->date_to = $request->tarikh_akhir;
         $Booking->days = $request->days;
         $Booking->hour = $request->hour;
-        $Booking->time_from = $request->masa_from;
-        $Booking->time_to = $request->masa_to;
+        $Booking->time = $request->masa;
         $Booking->amaun = $request->amaun;
         $Booking->qty = $request->qty;
         $Booking->save();

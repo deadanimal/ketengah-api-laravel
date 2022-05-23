@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('harga')->nullable();
             $table->string('lokasi')->nullable();
             $table->string('kod_urusan')->nullable();
+            $table->integer('hari');
             $table->timestamps();
         });
     }

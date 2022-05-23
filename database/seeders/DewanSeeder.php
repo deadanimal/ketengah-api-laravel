@@ -20,57 +20,66 @@ class DewanSeeder extends Seeder
         DB::table('dewans')->truncate();
         Dewan::create([
             'nama'=> 'BALORA',
-            'harga'=> '10',
+            'harga'=> '200',
             'lokasi'=> '1',
-            'kod_urusan'=>'1'
+            'kod_urusan'=>'1',
+            'hari'=>0
         ]);
         Dewan::create([
             'nama'=> 'DEWAN ORANG RAMAI',
-            'harga'=> '10',
+            'harga'=> '100',
             'lokasi'=> '1',
-            'kod_urusan'=>'1'
+            'kod_urusan'=>'1',
+            'hari'=>5
         ]);
         Dewan::create([
             'nama'=> 'BALORA',
-            'harga'=> '10',
+            'harga'=> '0',
             'lokasi'=> '2',
-            'kod_urusan'=>'1'
+            'kod_urusan'=>'1',
+            'hari'=>0
         ]);
         Dewan::create([
             'nama'=> 'DEWAN ORANG RAMAI',
-            'harga'=> '10',
+            'harga'=> '100',
             'lokasi'=> '2',
-            'kod_urusan'=>'1'
+            'kod_urusan'=>'1',
+            'hari'=>0
         ]);
         Dewan::create([
             'nama'=> 'BALORA',
-            'harga'=> '10',
+            'harga'=> '0',
             'lokasi'=> '3',
-            'kod_urusan'=>'1'
+            'kod_urusan'=>'1',
+            'hari'=>0
         ]);
         Dewan::create([
             'nama'=> 'BALORA',
-            'harga'=> '10',
+            'harga'=> '0',
             'lokasi'=> '4',
-            'kod_urusan'=>'1'
+            'kod_urusan'=>'1',
+            'hari'=>0
         ]);
         Dewan::create([
             'nama'=> 'DEWAN ORANG RAMAI',
-            'harga'=> '10',
+            'harga'=> '100',
             'lokasi'=> '4',
-            'kod_urusan'=>'1'
+            'kod_urusan'=>'1',
+            'hari'=>0
         ]);
         Dewan::create([
             'nama'=> 'BALORA',
-            'harga'=> '10',
+            'harga'=> '0',
             'lokasi'=> '5',
-            'kod_urusan'=>'1'
+            'kod_urusan'=>'1',
+            'hari'=>0
         ]);
         Dewan::create([
             'nama'=> 'DEWAN ORANG RAMAI',
-            'harga'=> '10',
+            'harga'=> '100',
             'lokasi'=> '5',
-            'kod_urusan'=>'1'
+            'kod_urusan'=>'1',
+            'hari'=>0
         ]);
     }
 }
