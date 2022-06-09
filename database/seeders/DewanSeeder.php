@@ -34,7 +34,7 @@ class DewanSeeder extends Seeder
         ]);
         Dewan::create([
             'nama'=> 'BALORA',
-            'harga'=> '0',
+            'harga'=> '200',
             'lokasi'=> '2',
             'kod_urusan'=>'1',
             'hari'=>0
@@ -48,14 +48,14 @@ class DewanSeeder extends Seeder
         ]);
         Dewan::create([
             'nama'=> 'BALORA',
-            'harga'=> '0',
+            'harga'=> '200',
             'lokasi'=> '3',
             'kod_urusan'=>'1',
             'hari'=>0
         ]);
         Dewan::create([
             'nama'=> 'BALORA',
-            'harga'=> '0',
+            'harga'=> '200',
             'lokasi'=> '4',
             'kod_urusan'=>'1',
             'hari'=>0
@@ -69,7 +69,7 @@ class DewanSeeder extends Seeder
         ]);
         Dewan::create([
             'nama'=> 'BALORA',
-            'harga'=> '0',
+            'harga'=> '200',
             'lokasi'=> '5',
             'kod_urusan'=>'1',
             'hari'=>0

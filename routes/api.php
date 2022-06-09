@@ -18,6 +18,9 @@ use App\Http\Controllers\SHTenderDetailController;
 use App\Http\Controllers\AlatanController;
 use App\Http\Controllers\BadmintonController;
 use App\Http\Controllers\FutsalController;
+use App\Http\Controllers\PerumahanController;
+use App\Http\Controllers\PremisController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -71,5 +74,9 @@ Route::apiResource('tenderdtl', SHTenderDetailController::class);
 Route::apiResource('alatan', AlatanController::class);
 Route::apiResource('badminton', BadmintonController::class);
 Route::apiResource('futsal', FutsalController::class);
+
+Route::apiResource('perumahan', PerumahanController::class);
+Route::apiResource('premis', PremisController::class);
+
 
 
