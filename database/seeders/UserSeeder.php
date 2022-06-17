@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         DB::table('users')->truncate();
         User::create([
             'name'=> 'testnama',
-            'no_ic'=> '123',
+            'no_ic'=> '660823115217',
             'no_telefon'=> '123',
             'alamat'=>'1',
             'poskod'=>'1',

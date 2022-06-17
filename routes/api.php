@@ -20,6 +20,10 @@ use App\Http\Controllers\BadmintonController;
 use App\Http\Controllers\FutsalController;
 use App\Http\Controllers\PerumahanController;
 use App\Http\Controllers\PremisController;
+use App\Http\Controllers\BayaranController;
+use App\Http\Controllers\BilPremisController;
+use App\Http\Controllers\BilRumahController;
+use App\Http\Controllers\TransaksiController;
 
 
 /*
@@ -78,5 +82,9 @@ Route::apiResource('futsal', FutsalController::class);
 Route::apiResource('perumahan', PerumahanController::class);
 Route::apiResource('premis', PremisController::class);
 
+Route::apiResource('bayaran', BayaranController::class);
+Route::apiResource('bilpremis', BilPremisController::class);
+Route::apiResource('bilrumah', BilRumahController::class);
+Route::apiResource('transaksi', TransaksiController::class);
 
 

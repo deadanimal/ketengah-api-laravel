@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('premis', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
+            $table->string('nama')->nullable();
             $table->string('no_akaun_premis')->nullable();
             $table->string('bandar')->nullable();
             $table->string('no_kad_pengenalan')->nullable();
