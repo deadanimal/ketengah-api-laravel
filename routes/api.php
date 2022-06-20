@@ -83,6 +83,8 @@ Route::apiResource('perumahan', PerumahanController::class);
 Route::apiResource('premis', PremisController::class);
 
 Route::apiResource('bayaran', BayaranController::class);
+Route::post('lejar', [BayaranController::class,'lejar']);
+
 Route::apiResource('bilpremis', BilPremisController::class);
 Route::apiResource('bilrumah', BilRumahController::class);
 Route::apiResource('transaksi', TransaksiController::class);

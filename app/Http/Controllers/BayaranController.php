@@ -127,4 +127,41 @@ class BayaranController extends Controller
     {
         //
     }
+
+    public function lejar(Request $request)
+    {
+        $client = new \GuzzleHttp\Client();
+        try{
+            $link = 'https://sisperv3.ketengah.gov.my/v1/integrasi/lejarakaun?token=OAf3v7PIrU9Gk_FQA1HXXcTI82uZ0EZX';
+            $req = $client->request('POST', $link, [
+                'form_params' => [
+                    'nokp' => $request->no_ic,
+                    'noakaun' => $request->noakaun
+                ]
+            ]
+            );
+            $response = $req->getBody()->getContents();
+            $vals = json_decode($response);
+            
+
+            if($vals->status == 'Gagal'){
+                return response()->json('2');
+            }
+        }
+        catch(\Exception $e){
+            // return response()->json($e);
+            return response()->json('1');
+        }
+
+        $result = [];
+        foreach ($vals->lejardtl as $value){
+            $itemdate = strtotime($value->tarikh);
+            if(date("Y", $itemdate) == $request->year) {
+                if(date("m", $itemdate) == $request->month){
+                    array_push($result,$value);
+                }
+            }
+        }
+        return response()->json($result);
+    }
 }
