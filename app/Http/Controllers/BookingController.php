@@ -120,7 +120,7 @@ class BookingController extends Controller
             $result = new \stdClass();
             $result = $item->date_from;
             array_push($res,$result);
-            $limitdate = date('Y-m-d', strtotime($res[0] . ' +1 day'));
+            $limitdate = date('Y-m-d', strtotime($res[0] . ' +5 day'));
             // $limitdate = date('Y-m-d', strtotime($res[0] . ' +7 day'));
             if($item->days > 1){
                 for($x = 1; $x <= $item->days; $x++){
