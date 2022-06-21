@@ -24,7 +24,7 @@ class BookingController extends Controller
                 $book->tempat = $lokasi->nama.' '.$badminton->nama_gelanggang;
             }else if($book->dewan_id != null){
                 $book->jenis = "Dewan";
-                $dewan = Dewan::select('nama_gelanggang','lokasi')->where('id', $book->dewan_id)->first();
+                $dewan = Dewan::select('nama','lokasi')->where('id', $book->dewan_id)->first();
                 $lokasi = Lokasi::where('id',$dewan->lokasi)->first();
                 $book->tempat = $lokasi->nama.' '.$dewan->nama;
             }else if($book->ft_court_id != null){
