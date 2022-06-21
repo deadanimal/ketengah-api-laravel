@@ -70,6 +70,8 @@ Route::get('pengumumantempoh', [PengumumanController::class,'pengumumantempoh'])
 Route::apiResource('dewan', DewanController::class);
 Route::apiResource('lokasi', LokasiController::class);
 Route::apiResource('booking', BookingController::class);
+Route::get('grafbook', [BookingController::class,'grafbook']);
+
 Route::apiResource('lain', LainController::class);
 Route::get('laindd', [LainController::class,'laindd']);
 

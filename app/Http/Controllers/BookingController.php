@@ -15,9 +15,28 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $dewan = Booking::all();
-
-        return response()->json($dewan);
+        $booking = Booking::all();
+        foreach($booking as $book){
+            if($book->bd_court_id != null){
+                $book->jenis = "Badminton Court";
+                $badminton = Badminton::select('nama_gelanggang','lokasi')->where('id', $book->bd_court_id)->first();
+                $lokasi = Lokasi::where('id',$badminton->lokasi)->first();
+                $book->tempat = $lokasi->nama.' '.$badminton->nama_gelanggang;
+            }else if($book->dewan_id != null){
+                $book->jenis = "Dewan";
+                $dewan = Dewan::select('nama_gelanggang','lokasi')->where('id', $book->dewan_id)->first();
+                $lokasi = Lokasi::where('id',$dewan->lokasi)->first();
+                $book->tempat = $lokasi->nama.' '.$dewan->nama;
+            }else if($book->ft_court_id != null){
+                $book->jenis = "Futsal Court";
+                $futsal = Futsal::select('nama_gelanggang','lokasi')->where('id', $book->ft_court_id)->first();
+                $lokasi = Lokasi::where('id',$futsal->lokasi)->first();
+                $book->tempat = $lokasi->nama.' '.$futsal->nama_gelanggang;
+            }
+        }
+        
+        
+        return response()->json($booking);
     }
 
    
@@ -87,5 +106,37 @@ class BookingController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function grafbook()
+    {
+        $d=strtotime("now");
+        $from = date("Y-m-d", $d);
+        $to = date('Y-m-d', strtotime($from . ' +10 day'));
+        $booking = Booking::whereBetween('date_from', [$from, $to])->orderBy('date_from', 'desc')->get();
+        // return $booking;
+        $res=array();
+        foreach($booking as $key => $item){
+            $result = new \stdClass();
+            $result = $item->date_from;
+            $limitdate = date('Y-m-d', strtotime($item->date_from . ' +5 day'));
+            array_push($res,$result);
+            if($item->days > 1){
+                for($x = 2; $x <= $item->days; $x++){
+                    $result = new \stdClass();
+                    $result = date('Y-m-d', strtotime($item->date_from . ' +'.$x.' day'));
+                    if($result != $limitdate){
+                        array_push($res,$result);
+                    }
+                }
+            }
+        }
+        // return $res;
+
+        usort($res, function ($a, $b) {
+            return strtotime($a) - strtotime($b);
+        });
+        $data = (array_count_values($res));
+        return response()->json([$data]);
     }
 }
