@@ -119,14 +119,17 @@ class BookingController extends Controller
         foreach($booking as $key => $item){
             $result = new \stdClass();
             $result = $item->date_from;
-            $limitdate = date('Y-m-d', strtotime($item->date_from . ' +5 day'));
             array_push($res,$result);
+            $limitdate = date('Y-m-d', strtotime($res[0] . ' +1 day'));
+            // $limitdate = date('Y-m-d', strtotime($res[0] . ' +7 day'));
             if($item->days > 1){
-                for($x = 2; $x <= $item->days; $x++){
+                for($x = 1; $x <= $item->days; $x++){
                     $result = new \stdClass();
                     $result = date('Y-m-d', strtotime($item->date_from . ' +'.$x.' day'));
                     if($result != $limitdate){
                         array_push($res,$result);
+                    }else{
+                        break;
                     }
                 }
             }
