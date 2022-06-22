@@ -89,24 +89,23 @@ class NotisController extends Controller
                     );
                     $response = $req->getBody()->getContents();
                     $vals = json_decode($response);
-    
+                    foreach($vals->notis as $item){
+                        $result = new \stdClass();
+                        $result->view = false;
+                        $result->created_at = date("Y-m-d H:i:s");
+                        $result->tajuk = $vals->noakaun;
+                        $result->keterangan = $item->keterangan;
+                    }
+                    array_push($res,$result);
+                    
                     if($vals->status == 'Gagal'){
-                        return response()->json('2');
+                        // return response()->json('2');
                     }
                 }
                 catch(\Exception $e){
-                    return $e;
-                    return response()->json('1');
+                    // return $e;
+                    // return response()->json('1');
                 }
-    
-                foreach($vals->notis as $item){
-                    $result = new \stdClass();
-                    $result->tajuk = $vals->noakaun;
-                    $result->keterangan = $item->keterangan;
-                }
-                
-    
-                array_push($res,$result);
     
             }
         }
@@ -125,25 +124,23 @@ class NotisController extends Controller
                     );
                     $response = $req->getBody()->getContents();
                     $vals = json_decode($response);
+                    foreach($vals->notis as $item){
+                        $result = new \stdClass();
+                        $result->view = false;
+                        $result->created_at = date("Y-m-d H:i:s");
+                        $result->tajuk = $vals->noakaun;
+                        $result->keterangan = $item->keterangan;
+                    }
+                    array_push($res,$result);
+
                     if($vals->status == 'Gagal'){
-                        return response()->json('2');
+                        // return response()->json('2');
                     }
                 }
                 catch(\Exception $e){
                     return $e;
-                    return response()->json('1');
+                    // return response()->json('1');
                 }
-    
-                foreach($vals->notis as $item){
-                    $result = new \stdClass();
-                    $result->view = false;
-                    $result->created_at = date("Y-m-d H:i:s");
-                    $result->tajuk = $vals->noakaun;
-                    $result->keterangan = $item->keterangan;
-                }
-                
-    
-                array_push($res,$result);
     
             }
         }
