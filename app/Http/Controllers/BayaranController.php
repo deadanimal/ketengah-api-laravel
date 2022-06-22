@@ -98,6 +98,7 @@ class BayaranController extends Controller
                 $Resit->save();
 
                 $result = new \stdClass();
+                $result->id = $Bayaran->id;
                 $result->noakaun = $value->noakaun;
                 $result->no_ic_pemilik = $value->no_ic_pemilik;
                 $result->tarikh_resit = $Resit->tarikh_resit;
@@ -105,8 +106,67 @@ class BayaranController extends Controller
 
                 array_push($res,$result);
             }    
+        }else if($request->src == 2){
+            $res=array();
+            foreach ($akaun as $value) {
+
+                $client = new \GuzzleHttp\Client();
+                try{
+                    $link = 'https://sisperv3.ketengah.gov.my/v1/integrasi/bayarpelbagai?token=OAf3v7PIrU9Gk_FQA1HXXcTI82uZ0EZX';
+                    $req = $client->request('POST', $link, [
+                        'form_params' => [
+                            'kodbayaran' => $value->kodbayaran,
+                            'amaun' => $value->amaun,
+                            'tarikh' => date("Y-m-d h:i:s"),
+                            'norujukan' => 'ONLINE_TEST'
+                        ]
+                    ]
+                    );
+                    $response = $req->getBody()->getContents();
+                    $vals = json_decode($response);
+                    if($vals->status == 'Gagal'){
+                        return response()->json('2');
+                    }
+                }
+                catch(\Exception $e){
+                    return response()->json('1');
+                }
+
+                $Bayaran = new Bayaran();
+                $Bayaran->user_id = $request->userid;
+                $Bayaran->st_id = $value->kodbayaran;
+                $Bayaran->amaun = $value->amaun;
+                $Bayaran->tarikh_bayaran = date("Y-m-d");
+                $Bayaran->status_bayaran = "Berjaya";
+                $Bayaran->save();
+    
+                $Transaksi = new Transaksi();
+                $Transaksi->user_id = $request->userid;
+                $Transaksi->bayaran_id = $Bayaran->id;
+                $Transaksi->jenis_transaksi = $request->jenis_transaksi;
+                $Transaksi->card_detail = $request->card_detail;
+                $Transaksi->tarikh_transaksi = date("Y-m-d");
+                $Transaksi->save();
+
+                $Resit = new Resit();
+                $Resit->bayaran_id = $Bayaran->id;
+                $Resit->no_cukai = '';
+                $Resit->tarikh_resit = date("Y-m-d");
+                $Resit->no_resit = $vals->noresit;
+                $Resit->tahun = date("Y");
+                $Resit->save();
+
+                $result = new \stdClass();
+                $result->id = $Bayaran->id;
+                $result->kodbayaran = $value->kodbayaran;
+                // $result->no_ic_pemilik = $value->no_ic_pemilik;
+                $result->tarikh_resit = $Resit->tarikh_resit;
+                $result->no_resit = $vals->noresit;
+
+                array_push($res,$result);
+            }
+            return $vals;
         }
-        
         return $res;
     }
 

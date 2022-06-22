@@ -23,6 +23,7 @@ class LainController extends Controller
         $Lain->kod_urusan = $request->kod_urusan;
         $Lain->urusan = $request->urusan;
         $Lain->jumlah_bayar = $request->jumlah_bayar;
+        $Lain->checked = false;
         $Lain->save();
         return $Lain;
     }
