@@ -59,6 +59,7 @@ Route::post('penghargaanview', [PenghargaanController::class,'penghargaanview'])
 Route::apiResource('notis', NotisController::class);
 Route::post('notisview', [NotisController::class,'notisview']);
 Route::post('softdelete', [NotisController::class,'softdelete']);
+Route::post('notisapi', [NotisController::class,'notisapi']);
 
 Route::apiResource('admin', AdminController::class);
 Route::post('searchpengguna', [AdminController::class,'searchpengguna']);

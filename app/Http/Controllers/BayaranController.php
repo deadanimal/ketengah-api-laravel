@@ -52,6 +52,7 @@ class BayaranController extends Controller
 
                 $Bayaran = new Bayaran();
                 $Bayaran->user_id = $request->userid;
+                $Bayaran->noakaun = $value->noakaun;
 
                 if($value->jenis == 'rumah'){
                     $BilRumah = new BilRumah();
@@ -179,7 +180,12 @@ class BayaranController extends Controller
    
     public function update(Request $request, $id)
     {
-        //
+        if($request->no_akaun_rumah != null){
+            $bayaran = Bayaran::where('user_id', $id)->where('noakaun', $request->no_akaun_rumah)->get();
+        }else if($request->no_akaun_premis != null){
+            $bayaran = Bayaran::where('user_id', $id)->where('noakaun', $request->no_akaun_premis)->get();
+        }
+        return $bayaran;
     }
 
    

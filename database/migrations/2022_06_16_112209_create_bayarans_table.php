@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('bayarans', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
+            $table->string('noakaun')->nullable();
             $table->string('bil_premis_id')->nullable();
             $table->string('bil_rumah_id')->nullable();
             $table->string('booking_id')->nullable();
