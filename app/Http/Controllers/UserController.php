@@ -29,7 +29,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->active = 1;
         $user->save();
-        return response()->json('Tahniah Akaun Anda Berjaya Diaktifkan Sila Log Masuk Di Applikasi E-Sisper');
+        return response()->json('Tahniah Akaun Anda Berjaya Diaktifkan Sila Log Masuk Di Aplikasi e-Sisper');
     }
 
    
@@ -89,8 +89,18 @@ class UserController extends Controller
         $user->code = random_int(100000, 999999);
         $phone = '0'.$user->no_telefon;
 
+        $date = date('m/d/Y h:i:s a', time());
+        $notis = Notis::where('created_at', '>=', $date)->get();
+        $tempArray = json_decode($notis->deleted);
+        $temp = (object)[];
+        $temp->id = $request[1];
+        array_push($tempArray, $temp);
+        $jsonData = json_encode($tempArray);
+        $notis->deleted = $jsonData;
+        $notis->save();
+
         try {
-            $mess = 'Akaun e-Sisper anda berjaya didaftarkan. Sila Aktifkan Akaun anda di applikasi e-Sisper dengan menggunakan kod '.$user->code;
+            $mess = 'Akaun e-Sisper anda berjaya didaftarkan. Sila Aktifkan Akaun anda di aplikasi e-Sisper dengan menggunakan kod '.$user->code;
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
                 'Authorization' => 'FlIJxKC0DQ1RF5af9zKL95bsbQ6hEADEDBRO0fnBoFs='
@@ -129,7 +139,7 @@ class UserController extends Controller
         }
 
         try {
-            $mess = 'Permohonan set semula password akaun e-Sisper anda telah berjaya. Sila aktifkan akaun anda di applikasi e-Sisper dengan menggunakan katalaluan :- Sisper'.$code;
+            $mess = 'Permohonan set semula password akaun e-Sisper anda telah berjaya. Sila aktifkan akaun anda di aplikasi e-Sisper dengan menggunakan katalaluan :- Sisper'.$code;
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
                 'Authorization' => 'FlIJxKC0DQ1RF5af9zKL95bsbQ6hEADEDBRO0fnBoFs='

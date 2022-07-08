@@ -92,7 +92,7 @@ class KategoriAduanSeeder extends Seeder
         KategoriAduan::create([
             'kategori_id'=> '05',
             'kategori'=> 'Tandas',
-            'kerosakan_id'=> '01',
+            'kerosakan_id'=> '02',
             'kerosakan'=>'Pump Tandas'
         ]);
         KategoriAduan::create([

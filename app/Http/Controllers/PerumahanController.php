@@ -42,6 +42,7 @@ class PerumahanController extends Controller
         $Perumahan = new Perumahan();
         $Perumahan->user_id = $request->user_id;
         $Perumahan->nama = $request->nama_akaun;
+        $Perumahan->nama_pemilik = $vals->nama;
         $Perumahan->no_akaun_rumah = $request->no_akaun_rumah;
         $Perumahan->no_kad_pengenalan = $request->no_ic;
         $Perumahan->bandar = $vals->bandar;

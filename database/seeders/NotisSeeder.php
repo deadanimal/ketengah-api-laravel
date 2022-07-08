@@ -20,7 +20,7 @@ class NotisSeeder extends Seeder
         Notis::create([
             'admin_id'=> '1',
             'tajuk'=> 'Selamat Datang',
-            'keterangan'=>'Selamat Datang ke Applikasi Ketengah E-Sisper',
+            'keterangan'=>'Selamat Datang ke Aplikasi Ketengah e-Sisper',
             'created_at'=>'2030-03-21 07:17:31'
         ]);
     }

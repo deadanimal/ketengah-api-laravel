@@ -38,5 +38,8 @@ class UrusanSeeder extends Seeder
         Urusan::create([
             'urusan'=> 'Pelbagai'
         ]);
+        Urusan::create([
+            'urusan'=> 'Pembelian Sebut Harga/ Tender'
+        ]);
     }
 }

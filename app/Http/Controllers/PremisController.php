@@ -41,6 +41,7 @@ class PremisController extends Controller
         $Premis = new Premis();
         $Premis->user_id = $request->user_id;
         $Premis->nama = $request->nama_akaun;
+        $Premis->nama_pemilik = $vals->nama;
         $Premis->no_akaun_premis = $request->no_akaun_premis;
         $Premis->no_kad_pengenalan = $request->no_ic;
 

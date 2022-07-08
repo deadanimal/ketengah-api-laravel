@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('nama')->nullable();
+            $table->string('nama_pemilik')->nullable();
             $table->string('no_akaun_premis')->nullable();
             $table->string('bandar')->nullable();
             $table->string('no_kad_pengenalan')->nullable();
