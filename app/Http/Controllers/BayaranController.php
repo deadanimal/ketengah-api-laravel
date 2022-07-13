@@ -166,7 +166,7 @@ class BayaranController extends Controller
 
                 array_push($res,$result);
             }
-            return $vals;
+            // return $vals;
         }
         return $res;
     }
