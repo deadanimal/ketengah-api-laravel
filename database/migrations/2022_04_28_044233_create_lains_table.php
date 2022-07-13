@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('kod_urusan');
             $table->string('urusan');
             $table->integer('jumlah_bayar');
+            $table->string('checked');
             $table->timestamps();
         });
     }
