@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Notis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -91,13 +92,17 @@ class UserController extends Controller
 
         $date = date('m/d/Y h:i:s a', time());
         $notis = Notis::where('created_at', '>=', $date)->get();
-        $tempArray = json_decode($notis->deleted);
-        $temp = (object)[];
-        $temp->id = $request[1];
-        array_push($tempArray, $temp);
-        $jsonData = json_encode($tempArray);
-        $notis->deleted = $jsonData;
-        $notis->save();
+        if($notis != null){
+            foreach($notis as $item){
+                $tempArray = json_decode($item->deleted);
+                $temp = (object)[];
+                $temp->id = $request[1];
+                array_push($tempArray, $temp);
+                $jsonData = json_encode($tempArray);
+                $item->deleted = $jsonData;
+                $item->save();
+            }
+        }
 
         try {
             $mess = 'Akaun e-Sisper anda berjaya didaftarkan. Sila Aktifkan Akaun anda di aplikasi e-Sisper dengan menggunakan kod '.$user->code;
