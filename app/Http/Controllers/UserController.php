@@ -91,7 +91,7 @@ class UserController extends Controller
         $phone = '0'.$user->no_telefon;
 
         $date = date('m/d/Y h:i:s a', time());
-        $notis = Notis::where('created_at', '>=', $date)->get();
+        $notis = Notis::where('created_at', '>', $date)->get();
         if($notis != null){
             foreach($notis as $item){
                 $tempArray = json_decode($item->deleted);

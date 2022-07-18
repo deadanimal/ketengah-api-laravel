@@ -30,7 +30,7 @@ class NotisController extends Controller
     public function show($id)
     {
         $user = User::where('user_id',$id)->first();
-        $notis = Notis::whereRaw('not JSON_CONTAINS(deleted->"$[*].id", "'.$id.'")')->whereDate('created_at', '>=', $user->created_at)->get();
+        $notis = Notis::whereRaw('not JSON_CONTAINS(deleted->"$[*].id", "'.$id.'")')->whereDate('created_at', '>', $user->created_at)->get();
         return $notis;
     }
 
