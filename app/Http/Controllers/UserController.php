@@ -169,4 +169,10 @@ class UserController extends Controller
 
         return response()->json('succ');
     }
+    
+    public function all_users(Request $request)
+    {
+        $user_count = User::all()->count();
+        return response()->json($user_count);
+    }    
 }
