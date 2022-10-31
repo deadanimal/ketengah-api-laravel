@@ -92,4 +92,4 @@ Route::apiResource('bilpremis', BilPremisController::class);
 Route::apiResource('bilrumah', BilRumahController::class);
 Route::apiResource('transaksi', TransaksiController::class);
 
-
+Route::get('allusers', [UserController::class, 'all_users']);
