@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('/', [Controller::class, 'callback']);
+Route::any('/', 'welcome');
