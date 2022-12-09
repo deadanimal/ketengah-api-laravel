@@ -2,3 +2,5 @@
 !public/
 !.gitignore
 !fpx/
+!fpx/uat/
+!fpx/uat/*
