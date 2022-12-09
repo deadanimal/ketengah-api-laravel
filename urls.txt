@@ -1,0 +1,13 @@
+Indirect URL: https://ketengah-api.prototype.com.my/payments/fpx/callback
+Direct URL: https://ketengah-api.prototype.com.my/payments/fpx/webhook
+
+Track Payment Status: https://ketengah-api.prototype.com.my/api/fpx/transaction/status/{reference_id?}
+
+Initiate Payment: https://ketengah-api.prototype.com.my/fpx/initiate/payment/app
+
+reference_id = unique order reference id
+customer_name = name of the buyer/customer
+amount = amount to be charged
+customer_email = email id of customer
+remark = remarks for the transaction
+additional_params = any additional parameters you want to pass
