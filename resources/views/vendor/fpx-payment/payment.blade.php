@@ -32,43 +32,6 @@
                 </div>
             @endif
             <div class="row">
-                <div class="col-md-4 order-md-2 mb-4">
-                    <div class="border p-3 mb-3 rounded">
-                        <h4>Payment Details</h4>
-                        <p class="mb-3 pt-1">Please select your payment details.</p>
-
-                        <div class="alert alert-info">Minimum RM
-                            {{ number_format(Config::get('fpx.min_amount', '1'), 2) }} and maximum RM
-                            {{ number_format(Config::get('fpx.max_amount', '30000'), 2) }}</div>
-
-                        <div class="row mb-3">
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="custom-control custom-radio">
-                                    <img src="{{ asset('assets/vendor/fpx-payment/Images/fpx.svg') }}" height="64px">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="select_bank"></div>
-                            <div class="col">
-                                {!! Form::select('bank_id', [null => 'Select Bank'] + $banks->toArray(), $test ? 'TEST0021' : null, ['class' => 'form-control', 'required' => '']) !!}
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="custom-control custom-checkbox">
-                                    <label class="custom-control-label" for="agree">By clicking on "proceed", you agree
-                                        to the <a href="https://www.mepsfpx.com.my/FPXMain/termsAndConditions.jsp"
-                                            target="_blank">terms and conditions</a> of FPX.</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Proceed</button>
-                    </div>
-                </div>
                 <div class="col-md-8 order-md-1">
                     <div class="border p-3 mb-3 rounded">
                         <h4 class="mb-3">Billing details</h4>
@@ -112,6 +75,43 @@
                                 Please enter valid remark
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-4 order-md-2-na mb-4">
+                    <div class="border p-3 mb-3 rounded">
+                        <h4>Payment Details</h4>
+                        <p class="mb-3 pt-1">Please select your payment details.</p>
+
+                        <div class="alert alert-info">Minimum RM
+                            {{ number_format(Config::get('fpx.min_amount', '1'), 2) }} and maximum RM
+                            {{ number_format(Config::get('fpx.max_amount', '30000'), 2) }}</div>
+
+                        <div class="row mb-3">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="custom-control custom-radio">
+                                    <img src="{{ asset('assets/vendor/fpx-payment/Images/fpx.svg') }}" height="64px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="select_bank"></div>
+                            <div class="col">
+                                {!! Form::select('bank_id', [null => 'Select Bank'] + $banks->toArray(), $test ? 'TEST0021' : null, ['class' => 'form-control', 'required' => '']) !!}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="custom-control custom-checkbox">
+                                    <label class="custom-control-label" for="agree">By clicking on "proceed", you agree
+                                        to the <a href="https://www.mepsfpx.com.my/FPXMain/termsAndConditions.jsp"
+                                            target="_blank">terms and conditions</a> of FPX.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Proceed</button>
                     </div>
                 </div>
             </div>
