@@ -32,7 +32,7 @@
                 </div>
             @endif
             <div class="row">
-                <div class="col-md-8 order-md-1">
+                <div class="col-md-8 order-md-1-na">
                     <div class="border p-3 mb-3 rounded">
                         <h4 class="mb-3">Billing details</h4>
                         <div class="row">
