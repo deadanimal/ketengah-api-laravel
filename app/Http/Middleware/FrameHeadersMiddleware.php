@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Cors
+class FrameHeadersMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,9 @@ class Cors
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request)
-        /* ->header('X-Frame-Options',  'allow from *') */
-        ->header('Access-Control-Allow-Origin', '127.0.0.1:8100')
-        ->header('Access-Control-Allow-Origin', 'localhost:8100')
-        ->header('Access-Control-Allow-Origin', 'http://localhost:8100')
-        ->header('Access-Control-Allow-Origin', 'http://127.0.0.1:8100');
+        $response = $next($request);
+        $response->headers->remove('X-Frame-Options');
+        $response->header('X-Frame-Options', 'ALLOW FROM *');
+        return $response;
     }
 }
