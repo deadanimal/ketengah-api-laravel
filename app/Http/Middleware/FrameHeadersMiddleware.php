@@ -19,6 +19,7 @@ class FrameHeadersMiddleware
         $response = $next($request);
         $response->headers->remove('X-Frame-Options');
         $response->header('X-Frame-Options', 'ALLOW FROM *');
+        $response->header('X-Frame-Options', 'ALLOW FROM http://ketengah.test/');
         return $response;
     }
 }
