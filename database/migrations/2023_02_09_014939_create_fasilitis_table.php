@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('bandar');
             $table->string('fasiliti');
-            $table->string('kadar');
+            $table->string('kadar_per_jam');
             $table->string('masa_operasi');
             $table->string('hari_operasi');
             $table->timestamps();
