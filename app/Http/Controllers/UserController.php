@@ -192,15 +192,21 @@ class UserController extends Controller
         return response()->json($user_count);
     }
 
-    public function FirstLoginChangePassword(User $user, Request $request)
+    public function FirstLoginChangePassword($id, Request $request)
     {
-        $user->update([
-            'password' => $request->password,
-            'recurring' => true,
-        ]);
+        $user = User::where('user_id', $id)->first();
+        if($user){
+            User::where('user_id', $id)->update([
+                'password' => $request->password,
+                'recurring' => true,
+            ]);
+            return response()->json(User::where('user_id', $id)->first());
+        }
 
-        return response()->json($user);
-
+        return [
+            'code' => 500,
+            'massage' => 'User tidak wujud',
+        ];
     }
 
     public function SearchPenggunaByName(Request $request)

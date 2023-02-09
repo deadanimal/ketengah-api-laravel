@@ -44,7 +44,7 @@ Route::apiResource('user', UserController::class);
 Route::post('UserLogin', [UserController::class, 'UserLogin']);
 Route::post('UserRegister', [UserController::class, 'UserRegister']);
 Route::post('ForgotPass', [UserController::class, 'ForgotPass']);
-Route::post('FirstLoginChangePassword/{user}', [UserController::class, 'FirstLoginChangePassword']);
+Route::post('FirstLoginChangePassword/{id}', [UserController::class, 'FirstLoginChangePassword']);
 Route::post('SearchPenggunaByName', [UserController::class, 'SearchPenggunaByName']);
 
 Route::apiResource('aduan', AduanController::class);
