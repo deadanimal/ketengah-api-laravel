@@ -175,6 +175,7 @@ class UserController extends Controller
 
         if ($data == 'user') {
             if (isset($response)) {
+                $user->recurring = 0;
                 $user->save();
             }
         } else if ($data == 'admin') {
@@ -195,7 +196,7 @@ class UserController extends Controller
     public function FirstLoginChangePassword($id, Request $request)
     {
         $user = User::where('user_id', $id)->first();
-        if($user){
+        if ($user) {
             User::where('user_id', $id)->update([
                 'password' => $request->password,
                 'recurring' => true,
