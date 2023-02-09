@@ -9,6 +9,7 @@ use App\Http\Controllers\BilPremisController;
 use App\Http\Controllers\BilRumahController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DewanController;
+use App\Http\Controllers\FasilitiController;
 use App\Http\Controllers\FutsalController;
 use App\Http\Controllers\KategoriAduanController;
 use App\Http\Controllers\LainController;
@@ -94,3 +95,5 @@ Route::apiResource('bilrumah', BilRumahController::class);
 Route::apiResource('transaksi', TransaksiController::class);
 
 Route::get('allusers', [UserController::class, 'all_users']);
+
+Route::apiResource('fasiliti', FasilitiController::class);
