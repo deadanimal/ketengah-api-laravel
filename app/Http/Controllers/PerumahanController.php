@@ -70,12 +70,27 @@ class PerumahanController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $perumahan = Perumahan::findOrFail($id);
+        $perumahan->update($request->all());
+
+        return response()->json($perumahan);
     }
 
    
     public function destroy($id)
     {
-        //
+        $perumahan = Perumahan::findOrFail($id);
+        if ($perumahan) {
+            $perumahan->delete();
+            return [
+                'code'=>200,
+                'message'=>'Perumahan berjaya dibuang'
+            ];
+        }
+         return [
+                'code'=>500,
+                'message'=>'Perumahan gagal dibuang'
+            ];
+
     }
 }

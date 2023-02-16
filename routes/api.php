@@ -52,6 +52,7 @@ Route::apiResource('aduan', AduanController::class);
 Route::post('AduanFirst', [AduanController::class, 'AduanFirst']);
 Route::get('AduanDD', [AduanController::class, 'AduanDD']);
 Route::post('aduanStatus', [AduanController::class, 'aduanStatus']);
+Route::get('/perumahan_user/{user_id}', [AduanController::class, 'perumahanUser']);
 
 Route::apiResource('kategoriaduan', KategoriAduanController::class);
 

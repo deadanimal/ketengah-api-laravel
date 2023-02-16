@@ -175,7 +175,7 @@ class UserController extends Controller
 
         if ($data == 'user') {
             if (isset($response)) {
-                $user->recurring = 0;
+                $user->recurring = 1;
                 $user->save();
             }
         } else if ($data == 'admin') {

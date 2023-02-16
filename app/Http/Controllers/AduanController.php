@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Aduan;
 use App\Models\KategoriAduan;
+use App\Models\Perumahan;
 use Illuminate\Http\Request;
 
 class AduanController extends Controller
@@ -11,10 +12,10 @@ class AduanController extends Controller
     
     public function index()
     {
-        $aduan = Aduan::all();
+        $aduan = Aduan::with('perumahan')->get();
         foreach ($aduan as $item){
             $KateAduan = KategoriAduan::where('kategori_id',$item->kategori)->where('kerosakan_id',$item->jenis_rosak)->first();
-            $item->katedet = $KateAduan;
+            $item['katedet'] = $KateAduan;
         }
         
         return response()->json($aduan);
@@ -28,9 +29,16 @@ class AduanController extends Controller
         $Aduan->kategori = $request->kategori;
         $Aduan->jenis_rosak = $request->rosak;
         $Aduan->catatan = $request->catatan;
+        $Aduan->perumahan_id = $request->perumahan_id;
         $Aduan->status = 0;
         $Aduan->save();
         return $Aduan;
+    }
+
+    public function perumahanUser($user_id)
+    {
+       $perumahans = Perumahan::where('user_id', $user_id)->get();
+       return response()->json($perumahans);
     }
 
    
