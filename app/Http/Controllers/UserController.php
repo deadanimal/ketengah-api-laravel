@@ -172,14 +172,15 @@ class UserController extends Controller
         } catch (\Exception$e) {
             return '400';
         }
-
+        
         if ($data == 'user') {
             if (isset($response)) {
-                $user->recurring = 1;
+                $user->recurring = 1; 
                 $user->save();
             }
         } else if ($data == 'admin') {
             if (isset($response)) {
+                $admin->recurring = 1; 
                 $admin->save();
             }
         }
@@ -199,7 +200,7 @@ class UserController extends Controller
         if ($user) {
             User::where('user_id', $id)->update([
                 'password' => $request->password,
-                'recurring' => true,
+                'recurring' => 1,
             ]);
             return response()->json(User::where('user_id', $id)->first());
         }
