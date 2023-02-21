@@ -41,6 +41,7 @@ class UserController extends Controller
             $user->no_telefon = $request->data;
         } else if ($request->type == 'pass') {
             $user->password = $request->data;
+            $user->recurring = 0;
         } else if ($request->type == 'code') {
             $user->active = 1;
         }
