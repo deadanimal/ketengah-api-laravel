@@ -35,7 +35,8 @@ class BayaranController extends Controller
                             'noakaun' => $value->noakaun,
                             'amaun' => $value->amaun,
                             'tarikh' => date("Y-m-d h:i:s"),
-                            'norujukan' => 'ONLINE_TEST'
+                            'norujukan' => 'ONLINE_TEST',
+                            'kaedahbayaran' => '02'
                         ]
                     ]
                     );
